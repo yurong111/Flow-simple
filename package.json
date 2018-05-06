@@ -2,7 +2,7 @@
   "name": "my-project",
   "main": "lib/index.js",
   "scripts": {
-    "build": "babel src/ -d lib/",
+    "build": "babel --watch=./src --out-dir=./build",
     "prepublish": "yarn run build"
   },
   "devDependencies": {
@@ -10,5 +10,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "flow-bin": "^0.71.0"
+  },
+  "dependencies": {
+    "moment": "^2.22.1"
   }
 }

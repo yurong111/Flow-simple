@@ -104,3 +104,68 @@ babel-node src/index_02.js
 9. webstorm 对 flow 的语法兼容设置
 
 https://blog.jetbrains.com/webstorm/2016/11/using-flow-in-webstorm/
+
+10. 调用第三方库
+
+就moment为例
+
+```
+npm install -save moment
+```
+
+然后
+
+```
+yarn global add flow-typed
+flow-typed install
+```
+
+install时会在项目中的生成一个flow-typed文件，里面装载着moment等第三方库的接口文件
+
+然后需要在.flowconf中配置该目录
+
+```
+[ignore]
+.*/node_modules/.*
+
+[include]
+
+[libs]
+flow-typed/npm/
+
+[lints]
+
+[options]
+
+[strict]
+
+```
+
+简单的使用：
+
+```
+var moment = require('moment');
+
+var date = moment('2018-05-05');
+
+console.log('date', date.format('MM-DD-YYYY'));
+```
+
+11. Flow 转换器
+
+上文1中已安装以下转换器：
+
+```
+yarn add --dev babel-preset-flow
+```
+
+> 安装 Flow 转换器，并且添加一个 .babelrc 文件到项目根目录，用来告诉 Babel 要 移除 Flow 注解；
+> babel 会在后台运行，当发现 src/ 目录下的文件改变时， 就会创建相应的正常的 Js 版本，保存在 build/ 目录下
+
+
+```
+  "scripts": {
+    "build": "babel --watch=./src --out-dir=./build",
+    "prepublish": "yarn run build"
+  },
+```
