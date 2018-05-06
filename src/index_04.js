@@ -4,10 +4,10 @@
  * 引入第三方库
  */
 
-import comment from '../common/comment';
+var moment = require('moment');
 
 function toParse(datestr: string) {
-    return comment(datestr);
+    return moment(datestr);
 }
 
 
