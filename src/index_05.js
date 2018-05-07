@@ -1,10 +1,10 @@
 /**
  * @flow
- * 原生代码引入第三方库
+ * 引入第三方库，自定义相关接口，增加interfaces路径下自定义的的moment.js接口文件，并将.flowconfig中的libs只保留interfaces/
  */
 
 
-var moment = require('moment');
+import moment from 'moment'
 
 var date = moment('2018-05-05');
 
